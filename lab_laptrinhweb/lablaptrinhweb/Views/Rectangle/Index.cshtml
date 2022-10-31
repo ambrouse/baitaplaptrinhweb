@@ -1,0 +1,32 @@
+﻿@model lablaptrinhweb.Models.Rectangle
+@{
+    Layout = "~/Views/layout/layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h3>Acreage - Perimeter of the Rectangle</h3>
+    <hr/>
+    @using (Html.BeginForm("Index","rectangle",FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.Label("width of the Rectangle", new { @for = "width"})
+            @Html.TextBoxFor(m => m.height, new { @class = "form-control", @name = "length" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Length of the rectangle", new { @for = "length"})
+            @Html.TextBoxFor(m => m.height, new { @class = "form-control", @name = "length"}) 
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Calculate" />
+            <input type="reset" class="btn btn-default" value="Continue ..."
+                   onclick='location.href = "@Url.Action("","rectangle/")"'/>
+        </div>
+        <div class="form-group">
+            <p>@ViewBag.MessForPerimeter</p>
+            <p>@ViewBag.MessForPerimeter</p>
+        </div>
+    }
+</div>
+

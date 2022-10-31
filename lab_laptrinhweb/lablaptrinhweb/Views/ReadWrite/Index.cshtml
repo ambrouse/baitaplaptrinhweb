@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/layout/layout.cshtml";
+}
+
+<h2 style="margin-left:300px">Doc/Ghi Files</h2>
+<form method="post">
+    <input type="text" name="Id" value="@ViewBag.Id" placeholder="MaSinhVien" />
+    <input type="text" name="Name" value="@ViewBag.Name" placeholder="Ten" />
+    <input type="text" name="Marks" value="@ViewBag.Marks" placeholder="Diem" />
+    <button type="submit" formaction="/ReadWrite/Save"> Luu </button>
+    <button type="submit" formaction="/ReadWrite/Open"> Mo </button>
+</form>
+<p>@ViewData["Message"]</p>
+

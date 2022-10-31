@@ -1,0 +1,34 @@
+﻿@model lablaptrinhweb.Models.Triangle
+@{
+    Layout = "~/Views/layout/layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h3>Acreage - Perimeter of the Triangle</h3>
+    <hr />
+    @using (Html.BeginForm("", "Triangle", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.Label("the first edge ", new { @for = "first" })
+            @Html.TextBoxFor(m => m.firstEdge, new { @class = "form-control", @name = "first" })
+        </div>
+        <div class="form-group">
+            @Html.Label("the second edge ", new { @for = "second" })
+            @Html.TextBoxFor(m => m.secondEdge, new { @class = "form-control", @name = "second" })
+        </div>
+        <div class="form-group">
+            @Html.Label("the third edge ", new { @for = "third" })
+            @Html.TextBoxFor(m => m.thirdEdge, new { @class = "form-control", @name = "third" })
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Calculate" />
+            <input type="reset" class="btn btn-default" value="Continue ..."
+                   onclick='location.href = "@Url.Action("","Triangle/")"' />
+        </div>
+        <div class="form-group">
+            <p>@ViewBag.MessForPerimeter</p>
+            <p>@ViewBag.MessForPerimeter</p>
+        </div>
+    }
