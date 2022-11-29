@@ -13,6 +13,7 @@ namespace lablaptrinhweb.Controllers
         public ActionResult Index()
         {
             dbEntities db = new dbEntities();
+
             return View(db.sanPhams.ToList());
         }public ActionResult Login()
         {
@@ -30,9 +31,15 @@ namespace lablaptrinhweb.Controllers
             }
             ViewBag.err = "email not registered yet";
                 return View();
-        }public ActionResult Shop()
+        }public ActionResult Shop(String loai)
         {
             dbEntities db = new dbEntities();
+            if (loai != null)
+            {
+                int x = int.Parse(loai);
+                return View(db.sanPhams.Where(c => c.maLoai == x).ToList());
+            }
+            
             return View(db.sanPhams.ToList());
         }public ActionResult cart()
         {
@@ -55,9 +62,14 @@ namespace lablaptrinhweb.Controllers
         }public ActionResult productdetails(String id)
         {
             dbEntities db = new dbEntities();
+            
             return View(db.sanPhams.Find(id));
-        }public ActionResult blocgsingle()
+        }public ActionResult blocgsingle(String id)
         {
+            dbEntities db = new dbEntities();
+            if (id != null) {
+                return View(db.baiViets.FirstOrDefault(c => c.maBV == id));
+            }
             return View();
         }public ActionResult blocg()
         {
